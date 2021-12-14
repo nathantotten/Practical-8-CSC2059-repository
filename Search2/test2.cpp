@@ -28,6 +28,7 @@ int binarySearch(List<int>* pList, int first, int last, int key)
 	//	the desired value is found
 }
 
+
 int main()
 {
 	cout << "Input (1) List size (2) key: " << endl;
@@ -41,6 +42,26 @@ int main()
 
 	cout << "Position of occurence = " << binarySearch(pList, 0, pList->size() - 1, key) << endl;
 
+	// test linear search using setp_first and get_next
+	int p = -1;
+	pList->setp_first();
+	for (int i = 0; i < pList->size(); i++)
+		if (pList->get_next() == key) {
+			p = i;
+			break;
+		}
+	cout << "Position of occurrence = " << p << endl;
+
+	// test linear search using get
+	p = -1;
+	for (int i = 0; i < pList->size(); i++)
+		if (pList->get(i) == key) {
+			p = i;
+			break;
+		}
+	cout << "Position of occurrence = " << p << endl;
+
+	delete pList;
 
 	return 0;
 }
