@@ -13,8 +13,45 @@ int find_first_not_in_range(int* pi, int N, int lower, int upper)
 	return -1;
 }
 
+void print_duplicate(int* pi1, int N1, int* pi2, int N2)
+{
+	for (int i = 0; i < N1; i++) {
+		bool found = false;
+		for (int j = 0; j < N2; j++) {
+			if (pi1[i] == pi2[j]) {
+				found = true;
+				break;
+			}
+		}
+		if (found)
+			cout << pi1[i] << endl;
+	}
+}
+
+// test print_duplicate
 int main()
 {
+
+	cout << "Type N1, N2" << endl;
+	int N1, N2;
+	cin >> N1 >> N2;
+
+	int* pi1 = new int[N1];
+	int* pi2 = new int[N2];
+
+	if (pi1 && pi2) {
+		for (int i = 0; i < N1; i++)
+			pi1[i] = rand() % 10000;
+		for (int i = 0; i < N2; i++)
+			pi2[i] = rand() % 10000;
+		print_duplicate(pi1, N1, pi2, N2);
+	}
+
+	delete[] pi1;
+	delete[] pi2;
+
+	cout << "The complexity of print_duplicate is " << "O(N1 * N2)" << endl;
+
 	return 0;
 }
 
